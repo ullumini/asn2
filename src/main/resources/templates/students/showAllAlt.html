@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+    <main class = "container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <h1 class="text-center mt-5 mb-4">Alternate Student Display!</h1>
+                <h6 class="text-center mt-5 mb-4">In this alternate display, the students are represented in rectangles. The length is their gpa.</h6>
+                <table class="table table-borderless">
+					<tr>
+						<td class="text-center">
+							<a href="/students/view" class="btn btn-primary" role="button">Go back to Student View</a>
+						</td>
+					</tr>
+				</table>
+                <table class="table table-borderless">
+					<tr>
+						<td class="text-center" th:each="student:${stu}">
+                            <svg width="300"th:attr="height=${student.gpa}*100+20" xmlns="http://www.w3.org/2000/svg">
+                                <rect th:attr="width=${student.weight}*2, height=${student.gpa}*100" x="10" y="10" rx="20" ry="20"
+                                style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+                                <!-- <rect th:attr="width=${student.weight}, height=${student.height}*3, x=0, y=0" style="fill:white; stroke:black; stroke-width:3;"></rect>
+                                <text th:attr="x=5, y=15, font-size=16, font-family=Arial, style='fill:' + ${student.hairc}" th:text=${student.name}></text>
+                                <text th:attr="x=5, y=30, font-size=16, font-family=Arial, style='fill:black'" th:text=${student.gpa}></text> -->
+                            </svg>
+                            <h6 th:text="${student.name}"></h6>
+                            <h6 th:text="${student.gpa}"></h6> <br><br>
+                        </td>
+					</tr>
+				</table>
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>
